@@ -1,0 +1,10 @@
+services:
+  aerospike:
+     image: aerospike/aerospike-server:5.7.0.31
+     ports:
+       - '3000:3000'
+     environment:
+       - NAMESPACE=test-namespace
+       - SERVICE_PORT=3000
+       - MEM_GB=1
+       - STORAGE_GB=1
