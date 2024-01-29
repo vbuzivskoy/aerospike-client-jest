@@ -1,5 +1,14 @@
-const Aerospike = require('aerospike');
-const {sleep} = require('./util');
+/**
+ * @jest-environment ./tests/aerospikeEnvironment.js
+ */
+
+
+let Aerospike
+
+beforeAll(() => {
+  Aerospike = global.__SHARED_MODULE__
+});
+
 describe("Test Suite A", () => {
     it("Test Case A", async () => {
         const client = Aerospike.client({
@@ -15,7 +24,6 @@ describe("Test Suite A", () => {
 
         expect(record).toBeDefined();
 
-        await client.close();
-        await sleep(1000);
+        await client.close(false);
     }, 10000);
 });
